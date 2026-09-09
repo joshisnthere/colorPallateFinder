@@ -12,3 +12,11 @@ import os
 import customtkinter as ctk
 from tkinter import filedialog
 from PIL import Image, ImageTk
+
+import palette_logic as logic
+
+ctk.set_appearance_mode("dark")
+
+BG = "#0d0d10"
+PANEL = "#19191d"
+ACCENT = "#c792ea"
