@@ -6,3 +6,9 @@ with hex codes you can click to copy. Uses a small hand-rolled k-means so
 the only dependencies are Pillow and numpy -- no heavier vision libraries
 needed.
 """
+
+import os
+
+import customtkinter as ctk
+from tkinter import filedialog
+from PIL import Image, ImageTk
