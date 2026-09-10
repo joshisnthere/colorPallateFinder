@@ -20,3 +20,11 @@ ctk.set_appearance_mode("dark")
 BG = "#0d0d10"
 PANEL = "#19191d"
 ACCENT = "#c792ea"
+
+
+class PaletteExtractorApp(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("Color Palette Extractor")
+        self.geometry("720x560")
+        self.configure(fg_color=BG)
