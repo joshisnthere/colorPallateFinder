@@ -42,3 +42,13 @@ class PaletteExtractorApp(ctk.CTk):
 
         self.palette_frame = ctk.CTkFrame(self, fg_color=BG)
         self.palette_frame.pack(fill="x", padx=20, pady=(0, 20))
+
+        self.status_var = ctk.StringVar(value="Open an image to begin.")
+        ctk.CTkLabel(self, textvariable=self.status_var, text_color="#8a8a8a").pack(anchor="w", padx=24)
+
+    def _open_image(self):
+        path = filedialog.askopenfilename(
+            filetypes=[("Images", "*.png *.jpg *.jpeg *.bmp *.webp")]
+        )
+        if not path:
+            return
