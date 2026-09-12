@@ -36,3 +36,9 @@ class PaletteExtractorApp(ctk.CTk):
         ctk.CTkLabel(top, text="Colors:", text_color=ACCENT).pack(side="left", padx=(20, 6))
         self.count_var = ctk.StringVar(value="6")
         ctk.CTkEntry(top, textvariable=self.count_var, width=50).pack(side="left")
+
+        self.preview_label = ctk.CTkLabel(self, text="", fg_color=PANEL, corner_radius=12)
+        self.preview_label.pack(padx=20, pady=(0, 10))
+
+        self.palette_frame = ctk.CTkFrame(self, fg_color=BG)
+        self.palette_frame.pack(fill="x", padx=20, pady=(0, 20))
