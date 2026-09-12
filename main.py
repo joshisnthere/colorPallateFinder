@@ -28,3 +28,11 @@ class PaletteExtractorApp(ctk.CTk):
         self.title("Color Palette Extractor")
         self.geometry("720x560")
         self.configure(fg_color=BG)
+
+        top = ctk.CTkFrame(self, fg_color=PANEL, corner_radius=12)
+        top.pack(fill="x", padx=20, pady=20)
+        ctk.CTkButton(top, text="Open Image", fg_color="#2a2a30",
+                      command=self._open_image).pack(side="left", padx=16, pady=14)
+        ctk.CTkLabel(top, text="Colors:", text_color=ACCENT).pack(side="left", padx=(20, 6))
+        self.count_var = ctk.StringVar(value="6")
+        ctk.CTkEntry(top, textvariable=self.count_var, width=50).pack(side="left")
