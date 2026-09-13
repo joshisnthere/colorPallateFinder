@@ -71,3 +71,17 @@ class PaletteExtractorApp(ctk.CTk):
         colors = logic.extract_palette(image, count)
         self._render_palette(colors)
         self.status_var.set(f"{os.path.basename(path)} -- {count} dominant colors")
+
+    def _render_palette(self, colors):
+        for widget in self.palette_frame.winfo_children():
+            widget.destroy()
+
+        for r, g, b in colors:
+            hex_code = f"#{r:02x}{g:02x}{b:02x}"
+            swatch = ctk.CTkFrame(self.palette_frame, fg_color=hex_code, corner_radius=10, width=90, height=90)
+            swatch.pack(side="left", padx=6)
+            swatch.pack_propagate(False)
+            label = ctk.CTkLabel(swatch, text=hex_code.upper(), text_color=self._label_color(r, g, b))
+            label.pack(expand=True)
+            label.bind("<Button-1>", lambda e, h=hex_code: self._copy(h))
+            swatch.bind("<Button-1>", lambda e, h=hex_code: self._copy(h))
