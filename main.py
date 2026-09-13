@@ -57,3 +57,10 @@ class PaletteExtractorApp(ctk.CTk):
             count = max(2, min(12, int(self.count_var.get())))
         except ValueError:
             count = 6
+
+        image = Image.open(path).convert("RGB")
+        preview = image.copy()
+        preview.thumbnail((640, 360))
+        photo = ImageTk.PhotoImage(preview)
+        self.preview_label.configure(image=photo)
+        self.preview_label.image = photo
