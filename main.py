@@ -64,3 +64,10 @@ class PaletteExtractorApp(ctk.CTk):
         photo = ImageTk.PhotoImage(preview)
         self.preview_label.configure(image=photo)
         self.preview_label.image = photo
+
+        self.status_var.set("Extracting palette...")
+        self.update_idletasks()
+
+        colors = logic.extract_palette(image, count)
+        self._render_palette(colors)
+        self.status_var.set(f"{os.path.basename(path)} -- {count} dominant colors")
