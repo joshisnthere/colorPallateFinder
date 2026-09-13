@@ -52,3 +52,8 @@ class PaletteExtractorApp(ctk.CTk):
         )
         if not path:
             return
+
+        try:
+            count = max(2, min(12, int(self.count_var.get())))
+        except ValueError:
+            count = 6
