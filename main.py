@@ -85,3 +85,12 @@ class PaletteExtractorApp(ctk.CTk):
             label.pack(expand=True)
             label.bind("<Button-1>", lambda e, h=hex_code: self._copy(h))
             swatch.bind("<Button-1>", lambda e, h=hex_code: self._copy(h))
+
+    def _label_color(self, r, g, b):
+        brightness = (r * 299 + g * 587 + b * 114) / 1000
+        return "#111111" if brightness > 150 else "#f2f2f2"
+
+    def _copy(self, hex_code):
+        self.clipboard_clear()
+        self.clipboard_append(hex_code.upper())
+        self.status_var.set(f"Copied {hex_code.upper()} to clipboard")
