@@ -94,3 +94,8 @@ class PaletteExtractorApp(ctk.CTk):
         self.clipboard_clear()
         self.clipboard_append(hex_code.upper())
         self.status_var.set(f"Copied {hex_code.upper()} to clipboard")
+
+
+if __name__ == "__main__":
+    app = PaletteExtractorApp()
+    app.mainloop()
