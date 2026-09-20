@@ -11,3 +11,7 @@ def extract_palette(image, k, max_iterations=15, sample_size=8000):
     image = image.copy()
     image.thumbnail((150, 150))
     pixels = np.array(image).reshape(-1, 3).astype(float)
+
+    if len(pixels) > sample_size:
+        idx = np.random.choice(len(pixels), sample_size, replace=False)
+        pixels = pixels[idx]
