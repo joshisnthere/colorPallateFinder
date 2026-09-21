@@ -15,3 +15,10 @@ def extract_palette(image, k, max_iterations=15, sample_size=8000):
     if len(pixels) > sample_size:
         idx = np.random.choice(len(pixels), sample_size, replace=False)
         pixels = pixels[idx]
+
+    rng = np.random.default_rng(42)
+    centers = pixels[rng.choice(len(pixels), k, replace=False)]
+
+    for _ in range(max_iterations):
+        distances = np.linalg.norm(pixels[:, None, :] - centers[None, :, :], axis=2)
+        assignments = np.argmin(distances, axis=1)
