@@ -28,3 +28,8 @@ def extract_palette(image, k, max_iterations=15, sample_size=8000):
             members = pixels[assignments == i]
             new_centers.append(members.mean(axis=0) if len(members) else centers[i])
         centers = np.array(new_centers)
+
+    counts = np.bincount(assignments, minlength=k)
+    order = np.argsort(-counts)
+
+    return [tuple(int(v) for v in centers[i]) for i in order]
