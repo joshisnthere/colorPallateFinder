@@ -22,3 +22,9 @@ def extract_palette(image, k, max_iterations=15, sample_size=8000):
     for _ in range(max_iterations):
         distances = np.linalg.norm(pixels[:, None, :] - centers[None, :, :], axis=2)
         assignments = np.argmin(distances, axis=1)
+
+        new_centers = []
+        for i in range(k):
+            members = pixels[assignments == i]
+            new_centers.append(members.mean(axis=0) if len(members) else centers[i])
+        centers = np.array(new_centers)
